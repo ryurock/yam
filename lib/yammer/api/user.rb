@@ -123,6 +123,18 @@ module Yammer
       # @authentication Requires user context
       # @raise  [Yammer::Error::Unauthorized] Error raised when supplied user credentials are not valid.
       # @return [Yammer::ApiResponse]
+      # @param id [Integer, String] A Yammer group ID
+      # @example Fetch data group with ID 2
+      #   Yammer.get_in_group_users(2)
+      def get_in_group_users(id, opts={})
+        get("/api/v1/users/in_group/#{id}", opts)
+      end
+
+      # @see https://developer.yammer.com/restapi/#rest-users
+      # @rate_limited Yes
+      # @authentication Requires user context
+      # @raise  [Yammer::Error::Unauthorized] Error raised when supplied user credentials are not valid.
+      # @return [Yammer::ApiResponse]
       # @example Fetch data for the authenticated user
       #   Yammer.current_user
       def current_user
